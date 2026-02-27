@@ -57,43 +57,11 @@ export function PurchaseSection() {
   return (
     <section id="comprar" className="py-24 bg-background">
       <div className="container mx-auto px-4 md:px-6">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start max-w-6xl mx-auto">
+        <div className="max-w-3xl mx-auto">
           
-          {/* Purchase CTA Side */}
-          <FadeIn direction="right">
-            <div className="bg-primary/10 rounded-[2rem] p-8 md:p-12 border border-primary/20 relative overflow-hidden h-full flex flex-col justify-center">
-              <div className="absolute top-0 right-0 p-8 opacity-10">
-                <ShoppingBag size={120} />
-              </div>
-              
-              <div className="relative z-10">
-                <h2 className="text-3xl md:text-4xl font-serif font-bold text-foreground mb-4">Pronto para transformar sua pele?</h2>
-                <p className="text-lg text-muted-foreground mb-8">Adquira agora o Sabonete de Açafrão e Dolomita Ecosopis e sinta a diferença do poder da natureza.</p>
-                
-                <div className="flex items-end gap-4 mb-8">
-                  <span className="text-5xl font-bold text-foreground">R$ 25,00</span>
-                  <span className="text-muted-foreground pb-2 font-medium">/ un (≈100g)</span>
-                </div>
-
-                <ul className="space-y-3 mb-10">
-                  <li className="flex items-center text-foreground font-medium">
-                    <ShieldCheck className="text-secondary mr-3 h-5 w-5" /> Compra 100% segura
-                  </li>
-                  <li className="flex items-center text-foreground font-medium">
-                    <ShieldCheck className="text-secondary mr-3 h-5 w-5" /> Produto artesanal fresco
-                  </li>
-                </ul>
-
-                <Button size="lg" className="w-full sm:w-auto text-lg h-16 px-10 rounded-full shadow-xl shadow-primary/30 hover:scale-105 transition-transform" onClick={() => alert("Redirecionando para checkout (Simulação)")}>
-                  Comprar Agora <ArrowRight className="ml-2 h-5 w-5" />
-                </Button>
-              </div>
-            </div>
-          </FadeIn>
-
-          {/* Chat Interface Side */}
-          <FadeIn direction="left">
-            <Card className="border-none shadow-2xl bg-white overflow-hidden flex flex-col h-[600px]">
+          {/* Chat Interface - Centered and Full Width in its container */}
+          <FadeIn direction="up">
+            <Card className="border-none shadow-2xl bg-white overflow-hidden flex flex-col h-[600px] w-full">
               <CardHeader className="bg-primary text-primary-foreground p-6">
                 <div className="flex items-center space-x-3">
                   <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center">

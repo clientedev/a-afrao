@@ -54,7 +54,7 @@ export function Navbar() {
               </a>
             ))}
             <Button asChild className="rounded-full shadow-md shadow-primary/20 hover:shadow-lg hover:-translate-y-0.5 transition-all">
-              <a href="#comprar">Comprar Agora</a>
+              <a href="#comprar">Converse com a Lia</a>
             </Button>
           </nav>
 
@@ -91,7 +91,7 @@ export function Navbar() {
           className="rounded-full mt-4"
           onClick={() => setMobileMenuOpen(false)}
         >
-          <a href="#comprar">Comprar Agora</a>
+          <a href="#comprar">Converse com a Lia</a>
         </Button>
       </div>
     </header>
