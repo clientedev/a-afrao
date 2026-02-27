@@ -1,15 +1,16 @@
-import { db } from "./db";
-import { inquiries, type InsertInquiry, type Inquiry } from "@shared/schema";
+import type { InsertInquiry, Inquiry } from "@shared/schema";
 
 export interface IStorage {
   createInquiry(inquiry: InsertInquiry): Promise<Inquiry>;
 }
 
-export class DatabaseStorage implements IStorage {
+export class MemStorage implements IStorage {
+  private id: number = 1;
+
   async createInquiry(insertInquiry: InsertInquiry): Promise<Inquiry> {
-    const [inquiry] = await db.insert(inquiries).values(insertInquiry).returning();
+    const inquiry: Inquiry = { ...insertInquiry, id: this.id++ };
     return inquiry;
   }
 }
 
-export const storage = new DatabaseStorage();
+export const storage = new MemStorage();

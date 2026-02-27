@@ -30,7 +30,7 @@ export function Hero() {
               <div className="flex flex-col sm:flex-row gap-4">
                 <Button asChild size="lg" className="rounded-full shadow-lg shadow-primary/25 hover:shadow-xl hover:-translate-y-1 transition-all h-14 px-8 text-base">
                   <a href="#comprar">
-                    Comprar Agora <ArrowRight className="ml-2 h-5 w-5" />
+                    Converse com a Lia <ArrowRight className="ml-2 h-5 w-5" />
                   </a>
                 </Button>
                 <Button asChild variant="outline" size="lg" className="rounded-full h-14 px-8 text-base border-primary/20 hover:bg-primary/5">
