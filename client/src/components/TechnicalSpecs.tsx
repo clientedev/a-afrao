@@ -11,12 +11,6 @@ export function TechnicalSpecs() {
       color: "text-secondary"
     },
     {
-      title: "Efeito Clareador",
-      value: "Uniformiza o tom da pele progressivamente.",
-      icon: Sparkles,
-      color: "text-primary"
-    },
-    {
       title: "Tratamento",
       value: "Auxilia na redução de foliculite e inflamações.",
       icon: HeartPulse,

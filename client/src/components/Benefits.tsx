@@ -6,23 +6,18 @@ export function Benefits() {
   const benefits = [
     {
       icon: Activity,
-      title: "Ação Anti-inflamatória",
-      description: "Reduz a vermelhidão e acalma a pele irritada de forma natural."
-    },
-    {
-      icon: Sun,
-      title: "Uniformização do Tom",
-      description: "O açafrão atua clareando manchas e trazendo luminosidade."
+      title: "Prevenção da Foliculite",
+      description: "Auxilia na prevenção e tratamento de pelos encravados e inflamações."
     },
     {
       icon: Zap,
       title: "Bactericida Poderoso",
-      description: "Combate as bactérias causadoras da acne e foliculite."
+      description: "Combate as bactérias e contribui para o controle da acne e oleosidade."
     },
     {
       icon: RefreshCw,
       title: "Cicatrizante Natural",
-      description: "Acelera a recuperação de pequenas lesões na pele."
+      description: "Acelera a recuperação da pele e acalma irritações."
     }
   ];
 

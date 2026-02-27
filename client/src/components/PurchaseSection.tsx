@@ -24,9 +24,13 @@ export function PurchaseSection() {
 
   useEffect(() => {
     if (scrollRef.current) {
-      scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
+      const scrollElement = scrollRef.current;
+      scrollElement.scrollTo({
+        top: scrollElement.scrollHeight,
+        behavior: "smooth"
+      });
     }
-  }, [messages]);
+  }, [messages, isLoading]);
 
   const handleSend = async () => {
     if (!input.trim() || isLoading) return;
@@ -60,8 +64,8 @@ export function PurchaseSection() {
         <div className="max-w-3xl mx-auto">
           
           {/* Chat Interface - Centered and Full Width in its container */}
-          <FadeIn direction="up">
-            <Card className="border-none shadow-2xl bg-white overflow-hidden flex flex-col h-[600px] w-full">
+          <FadeIn direction="up" className="h-full">
+            <Card className="border-none shadow-2xl bg-white overflow-hidden flex flex-col h-[600px] w-full max-h-[85vh]">
               <CardHeader className="bg-primary text-primary-foreground p-6">
                 <div className="flex items-center space-x-3">
                   <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center">

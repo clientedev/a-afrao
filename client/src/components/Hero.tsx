@@ -21,10 +21,10 @@ export function Hero() {
                 <span>100% Natural e Vegano</span>
               </div>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-foreground leading-tight mb-6 text-balance">
-                Sabonete de <span className="text-primary italic">Açafrão</span> e Dolomita
+                Sabonete de <span className="text-primary italic">Açafrão</span> e Dolomita – Pele uniforme e livre de foliculite
               </h1>
               <p className="text-lg md:text-xl text-muted-foreground mb-8 leading-relaxed text-balance">
-                Cuidado natural e clareador para a sua pele. Uma sinergia perfeita entre a natureza e o bem-estar, auxiliando no tratamento de foliculite e manchas.
+                Cuidado natural para a sua pele. Uma sinergia perfeita entre a natureza e o bem-estar, auxiliando no tratamento de foliculite.
               </p>
               
               <div className="flex flex-col sm:flex-row gap-4">

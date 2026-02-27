@@ -1,5 +1,5 @@
-import logoImg from "@assets/image_1772191028565.png";
-import { Instagram, Facebook, Mail, MapPin } from "lucide-react";
+import logoImg from "/logo.png";
+import { Instagram, Mail, MapPin, ExternalLink, ShoppingCart, Globe } from "lucide-react";
 
 export function Footer() {
   return (
@@ -28,25 +28,25 @@ export function Footer() {
 
           {/* Contact Col */}
           <div className="flex flex-col items-center md:items-start">
-            <h4 className="text-lg font-serif font-bold text-white mb-6">Contato</h4>
+            <h4 className="text-lg font-serif font-bold text-white mb-6">Contato e Redes</h4>
             <ul className="space-y-4 text-sm text-center md:text-left">
+              <li className="flex items-center justify-center md:justify-start">
+                <Globe size={16} className="text-primary mr-3" />
+                <a href="https://www.ecosopis.com.br" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">www.ecosopis.com.br</a>
+              </li>
+              <li className="flex items-center justify-center md:justify-start">
+                <Instagram size={16} className="text-primary mr-3" />
+                <a href="https://instagram.com/ecosopis" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">@ecosopis</a>
+              </li>
+              <li className="flex items-center justify-center md:justify-start">
+                <ShoppingCart size={16} className="text-primary mr-3" />
+                <a href="https://shopee.com.br/ecosopisnaturais" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">Loja Shopee</a>
+              </li>
               <li className="flex items-center justify-center md:justify-start">
                 <Mail size={16} className="text-primary mr-3" />
                 contato@ecosopis.com.br
               </li>
-              <li className="flex items-center justify-center md:justify-start">
-                <MapPin size={16} className="text-primary mr-3" />
-                Brasil - Envio para todo o país
-              </li>
             </ul>
-            <div className="flex space-x-4 mt-6">
-              <a href="#" className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-all">
-                <Instagram size={20} />
-              </a>
-              <a href="#" className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-all">
-                <Facebook size={20} />
-              </a>
-            </div>
           </div>
 
         </div>

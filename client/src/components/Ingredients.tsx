@@ -6,11 +6,11 @@ export function Ingredients() {
   const ingredients = [
     {
       name: "Açafrão (Cúrcuma)",
-      desc: "Conhecido por suas fortes propriedades clareadoras e anti-inflamatórias. Reduz a oleosidade e previne acne."
+      desc: "Conhecido por suas fortes propriedades anti-inflamatórias. Reduz a oleosidade e previne acne."
     },
     {
       name: "Dolomita",
-      desc: "Rica em cálcio e magnésio, tem ação calmante, tonificante e ajuda no clareamento de manchas na pele."
+      desc: "Rica em cálcio e magnésio, tem ação calmante e tonificante na pele."
     },
     {
       name: "Extrato de Barbatimão",
