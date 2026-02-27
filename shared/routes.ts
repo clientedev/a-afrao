@@ -26,6 +26,26 @@ export const api = {
       },
     },
   },
+  chat: {
+    send: {
+      method: 'POST' as const,
+      path: '/api/chat' as const,
+      input: z.object({
+        message: z.string(),
+        history: z.array(z.object({
+          role: z.enum(['user', 'assistant']),
+          content: z.string(),
+        })).optional(),
+      }),
+      responses: {
+        200: z.object({
+          message: z.string(),
+        }),
+        400: errorSchemas.validation,
+        500: errorSchemas.internal,
+      },
+    },
+  },
 };
 
 export function buildUrl(path: string, params?: Record<string, string | number>): string {

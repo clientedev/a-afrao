@@ -1,48 +1,67 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { FadeIn } from "./FadeIn";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { Card, CardContent } from "@/components/ui/card";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { z } from "zod";
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
-import { api } from "@shared/routes";
-import { useCreateInquiry } from "@/hooks/use-inquiries";
-import { ShoppingBag, ArrowRight, ShieldCheck, Mail } from "lucide-react";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { ScrollArea } from "@/components/ui/scroll-area";
+import { MessageSquare, Send, User, Bot, ShoppingBag, ShieldCheck, ArrowRight } from "lucide-react";
+import { apiRequest } from "@/lib/queryClient";
+import { useToast } from "@/hooks/use-toast";
 
-// Local schema matching the backend requirements
-const formSchema = z.object({
-  name: z.string().min(2, "Nome deve ter pelo menos 2 caracteres"),
-  email: z.string().email("E-mail inválido"),
-  message: z.string().min(10, "A mensagem deve ser mais detalhada"),
-});
-
-type FormValues = z.infer<typeof formSchema>;
+type Message = {
+  role: "user" | "assistant";
+  content: string;
+};
 
 export function PurchaseSection() {
-  const form = useForm<FormValues>({
-    resolver: zodResolver(formSchema),
-    defaultValues: { name: "", email: "", message: "" },
-  });
+  const [messages, setMessages] = useState<Message[]>([
+    { role: "assistant", content: "Olá! Sou Lia, sua assistente virtual da Ecosopis. Como posso ajudar você hoje com nosso Sabonete de Açafrão e Dolomita?" }
+  ]);
+  const [input, setInput] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const { toast } = useToast();
 
-  const { mutate: submitInquiry, isPending } = useCreateInquiry();
+  useEffect(() => {
+    if (scrollRef.current) {
+      scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
+    }
+  }, [messages]);
 
-  const onSubmit = (data: FormValues) => {
-    submitInquiry(data, {
-      onSuccess: () => form.reset()
-    });
+  const handleSend = async () => {
+    if (!input.trim() || isLoading) return;
+
+    const userMessage = input.trim();
+    setInput("");
+    setMessages(prev => [...prev, { role: "user", content: userMessage }]);
+    setIsLoading(true);
+
+    try {
+      const res = await apiRequest("POST", "/api/chat", {
+        message: userMessage,
+        history: messages.slice(-5) // Send last few messages for context
+      });
+      const data = await res.json();
+      setMessages(prev => [...prev, { role: "assistant", content: data.message }]);
+    } catch (error) {
+      toast({
+        variant: "destructive",
+        title: "Erro",
+        description: "Não foi possível falar com a Lia no momento."
+      });
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
     <section id="comprar" className="py-24 bg-background">
       <div className="container mx-auto px-4 md:px-6">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-24 items-start max-w-6xl mx-auto">
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start max-w-6xl mx-auto">
           
           {/* Purchase CTA Side */}
           <FadeIn direction="right">
-            <div className="bg-primary/10 rounded-[2rem] p-8 md:p-12 border border-primary/20 relative overflow-hidden">
+            <div className="bg-primary/10 rounded-[2rem] p-8 md:p-12 border border-primary/20 relative overflow-hidden h-full flex flex-col justify-center">
               <div className="absolute top-0 right-0 p-8 opacity-10">
                 <ShoppingBag size={120} />
               </div>
@@ -72,72 +91,72 @@ export function PurchaseSection() {
             </div>
           </FadeIn>
 
-          {/* Contact Form Side */}
+          {/* Chat Interface Side */}
           <FadeIn direction="left">
-            <Card className="border-none shadow-xl shadow-black/5 bg-white">
-              <CardContent className="p-8 md:p-10">
-                <div className="flex items-center space-x-3 mb-6">
-                  <div className="p-3 rounded-full bg-primary/10 text-primary">
-                    <Mail size={24} />
+            <Card className="border-none shadow-2xl bg-white overflow-hidden flex flex-col h-[600px]">
+              <CardHeader className="bg-primary text-primary-foreground p-6">
+                <div className="flex items-center space-x-3">
+                  <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center">
+                    <Bot size={24} />
                   </div>
-                  <h3 className="text-2xl font-serif font-bold">Dúvidas? Fale conosco</h3>
+                  <div>
+                    <CardTitle className="text-xl font-serif">Lia</CardTitle>
+                    <p className="text-xs opacity-80">Assistente Virtual Ecosopis</p>
+                  </div>
                 </div>
-                <p className="text-muted-foreground mb-8">Preencha o formulário abaixo para revendas, dúvidas sobre o produto ou parcerias.</p>
-                
-                <Form {...form}>
-                  <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-                    <FormField
-                      control={form.control}
-                      name="name"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel className="text-foreground">Nome completo</FormLabel>
-                          <FormControl>
-                            <Input placeholder="Seu nome" className="h-12 rounded-xl bg-background/50 border-border/60 focus:bg-white" {...field} />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-                    <FormField
-                      control={form.control}
-                      name="email"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel className="text-foreground">E-mail</FormLabel>
-                          <FormControl>
-                            <Input type="email" placeholder="seu@email.com" className="h-12 rounded-xl bg-background/50 border-border/60 focus:bg-white" {...field} />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-                    <FormField
-                      control={form.control}
-                      name="message"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel className="text-foreground">Sua mensagem</FormLabel>
-                          <FormControl>
-                            <Textarea 
-                              placeholder="Como podemos ajudar?" 
-                              className="min-h-[120px] rounded-xl bg-background/50 border-border/60 focus:bg-white resize-none" 
-                              {...field} 
-                            />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
+              </CardHeader>
+              <CardContent className="flex-1 p-0 flex flex-col bg-background/30">
+                <ScrollArea className="flex-1 p-6" viewportRef={scrollRef}>
+                  <div className="space-y-4">
+                    {messages.map((msg, i) => (
+                      <div key={i} className={`flex ${msg.role === "user" ? "justify-end" : "justify-start"}`}>
+                        <div className={`max-w-[80%] p-4 rounded-2xl flex items-start space-x-2 ${
+                          msg.role === "user" 
+                            ? "bg-primary text-primary-foreground rounded-tr-none" 
+                            : "bg-white text-foreground shadow-md rounded-tl-none"
+                        }`}>
+                          <div className="mt-1">
+                            {msg.role === "user" ? <User size={16} /> : <Bot size={16} />}
+                          </div>
+                          <p className="text-sm leading-relaxed">{msg.content}</p>
+                        </div>
+                      </div>
+                    ))}
+                    {isLoading && (
+                      <div className="flex justify-start">
+                        <div className="bg-white p-4 rounded-2xl rounded-tl-none shadow-md">
+                          <div className="flex space-x-1">
+                            <div className="w-2 h-2 bg-muted-foreground/30 rounded-full animate-bounce" />
+                            <div className="w-2 h-2 bg-muted-foreground/30 rounded-full animate-bounce [animation-delay:0.2s]" />
+                            <div className="w-2 h-2 bg-muted-foreground/30 rounded-full animate-bounce [animation-delay:0.4s]" />
+                          </div>
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                </ScrollArea>
+                <div className="p-4 bg-white border-t">
+                  <form 
+                    onSubmit={(e) => { e.preventDefault(); handleSend(); }}
+                    className="flex space-x-2"
+                  >
+                    <Input 
+                      placeholder="Tire suas dúvidas com a Lia..."
+                      value={input}
+                      onChange={(e) => setInput(e.target.value)}
+                      disabled={isLoading}
+                      className="flex-1 border-primary/20 rounded-full h-12 px-6"
                     />
                     <Button 
                       type="submit" 
-                      disabled={isPending} 
-                      className="w-full h-12 rounded-xl text-base font-semibold"
+                      size="icon" 
+                      disabled={isLoading || !input.trim()}
+                      className="rounded-full w-12 h-12 shrink-0"
                     >
-                      {isPending ? "Enviando..." : "Enviar Mensagem"}
+                      <Send size={18} />
                     </Button>
                   </form>
-                </Form>
+                </div>
               </CardContent>
             </Card>
           </FadeIn>
