@@ -16,7 +16,7 @@ export function HowToUse() {
     {
       num: "03",
       title: "Deixe agir",
-      desc: "Para maximizar os benefícios do açafrão e dolomita, aguarde de 5 a 10 minutos."
+      desc: "Para maximizar os benefícios do açafrão e dolomita, aguarde no mínimo 3 minutos."
     },
     {
       num: "04",
