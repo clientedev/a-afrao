@@ -20,11 +20,22 @@ export function PurchaseSection() {
   const [input, setInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
-  const messagesEndRef = useRef<HTMLDivElement>(null);
+  const isMounted = useRef(false);
   const { toast } = useToast();
 
   useEffect(() => {
-    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+    if (!isMounted.current) {
+      isMounted.current = true;
+      return;
+    }
+
+    if (scrollRef.current) {
+      const scrollElement = scrollRef.current;
+      scrollElement.scrollTo({
+        top: scrollElement.scrollHeight,
+        behavior: "smooth"
+      });
+    }
   }, [messages, isLoading]);
 
   const handleSend = async () => {
@@ -78,8 +89,8 @@ export function PurchaseSection() {
                     {messages.map((msg, i) => (
                       <div key={i} className={`flex ${msg.role === "user" ? "justify-end" : "justify-start"}`}>
                         <div className={`max-w-[80%] p-4 rounded-2xl flex items-start space-x-2 ${msg.role === "user"
-                            ? "bg-primary text-primary-foreground rounded-tr-none"
-                            : "bg-white text-foreground shadow-md rounded-tl-none"
+                          ? "bg-primary text-primary-foreground rounded-tr-none"
+                          : "bg-white text-foreground shadow-md rounded-tl-none"
                           }`}>
                           <div className="mt-1">
                             {msg.role === "user" ? <User size={16} /> : <Bot size={16} />}
@@ -99,7 +110,6 @@ export function PurchaseSection() {
                         </div>
                       </div>
                     )}
-                    <div ref={messagesEndRef} />
                   </div>
                 </ScrollArea>
                 <div className="p-4 bg-white border-t">
