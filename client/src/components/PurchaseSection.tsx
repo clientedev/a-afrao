@@ -2,6 +2,7 @@ import { useState, useRef, useEffect } from "react";
 import { FadeIn } from "./FadeIn";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { MessageSquare, Send, User, Bot, ShoppingBag, ShieldCheck, ArrowRight } from "lucide-react";
@@ -83,8 +84,8 @@ export function PurchaseSection() {
                   </div>
                 </div>
               </CardHeader>
-              <CardContent className="flex-1 p-0 flex flex-col bg-background/30">
-                <ScrollArea className="flex-1 p-6" viewportRef={scrollRef}>
+              <CardContent className="flex-1 p-0 flex flex-col bg-background/30 min-h-0">
+                <ScrollArea className="flex-1 p-6 min-h-0" viewportRef={scrollRef}>
                   <div className="space-y-4">
                     {messages.map((msg, i) => (
                       <div key={i} className={`flex ${msg.role === "user" ? "justify-end" : "justify-start"}`}>
@@ -117,12 +118,18 @@ export function PurchaseSection() {
                     onSubmit={(e) => { e.preventDefault(); handleSend(); }}
                     className="flex space-x-2"
                   >
-                    <Input
+                    <Textarea
                       placeholder="Tire suas dúvidas com a Lia..."
                       value={input}
                       onChange={(e) => setInput(e.target.value)}
+                      onKeyDown={(e) => {
+                        if (e.key === "Enter" && !e.shiftKey) {
+                          e.preventDefault();
+                          handleSend();
+                        }
+                      }}
                       disabled={isLoading}
-                      className="flex-1 border-primary/20 rounded-full h-12 px-6"
+                      className="flex-1 border-primary/20 rounded-2xl min-h-[48px] max-h-32 resize-none px-4 py-3"
                     />
                     <Button
                       type="submit"
