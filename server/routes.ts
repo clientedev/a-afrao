@@ -11,8 +11,8 @@ Informações chave sobre o produto:
 - Preço: Aproximadamente R$ 25,00 (100g).
 - Ações: Anti-inflamatória, bactericida, cicatrizante, clareadora, auxilia na foliculite.
 - Indicação: Rosto e corpo, todos os tipos de pele.
-- Propriedades: 100% natural, vegano, artesanal.
-- Composição: Glicerina vegetal, açafrão, dolomita, extrato de barbatimão, lauril vegetal de coco, essência natural.
+- Propriedades: Ativos de origem natural, vegano, artesanal.
+- Composição: Glicerina vegetal, açafrão, dolomita, extrato de barbatimão, lauril vegetal de coco, fragrância cosmética suave.
 - Modo de uso: Aplicar na pele úmida, massagear, deixar agir 5-10 min, enxaguar.
 Seja sempre gentil, natural e profissional. Responda em Português.`;
 

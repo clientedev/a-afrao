@@ -24,7 +24,7 @@ export function TechnicalSpecs() {
     },
     {
       title: "Propriedades",
-      value: "100% natural, vegano, sem corantes.",
+      value: "Ativos de origem natural e fragrância suave.",
       icon: Leaf,
       color: "text-secondary"
     },

@@ -32,7 +32,7 @@ export function Ingredients() {
       <div className="container mx-auto px-4 md:px-6">
         <FadeIn className="text-center max-w-3xl mx-auto mb-16">
           <h2 className="text-3xl md:text-4xl font-serif font-bold text-foreground mb-4">Puro e Verdadeiro</h2>
-          <p className="text-lg text-muted-foreground">Composição limpa: sem essências artificiais, sem corantes sintéticos e livre de testes em animais.</p>
+          <p className="text-lg text-muted-foreground">Formulado com ativos de origem natural e fragrância cosmética suave. Livre de testes em animais.</p>
         </FadeIn>
 
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">

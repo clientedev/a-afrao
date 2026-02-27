@@ -20,16 +20,11 @@ export function PurchaseSection() {
   const [input, setInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
+  const messagesEndRef = useRef<HTMLDivElement>(null);
   const { toast } = useToast();
 
   useEffect(() => {
-    if (scrollRef.current) {
-      const scrollElement = scrollRef.current;
-      scrollElement.scrollTo({
-        top: scrollElement.scrollHeight,
-        behavior: "smooth"
-      });
-    }
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages, isLoading]);
 
   const handleSend = async () => {
@@ -62,7 +57,7 @@ export function PurchaseSection() {
     <section id="comprar" className="py-24 bg-background">
       <div className="container mx-auto px-4 md:px-6">
         <div className="max-w-3xl mx-auto">
-          
+
           {/* Chat Interface - Centered and Full Width in its container */}
           <FadeIn direction="up" className="h-full">
             <Card className="border-none shadow-2xl bg-white overflow-hidden flex flex-col h-[600px] w-full max-h-[85vh]">
@@ -82,11 +77,10 @@ export function PurchaseSection() {
                   <div className="space-y-4">
                     {messages.map((msg, i) => (
                       <div key={i} className={`flex ${msg.role === "user" ? "justify-end" : "justify-start"}`}>
-                        <div className={`max-w-[80%] p-4 rounded-2xl flex items-start space-x-2 ${
-                          msg.role === "user" 
-                            ? "bg-primary text-primary-foreground rounded-tr-none" 
+                        <div className={`max-w-[80%] p-4 rounded-2xl flex items-start space-x-2 ${msg.role === "user"
+                            ? "bg-primary text-primary-foreground rounded-tr-none"
                             : "bg-white text-foreground shadow-md rounded-tl-none"
-                        }`}>
+                          }`}>
                           <div className="mt-1">
                             {msg.role === "user" ? <User size={16} /> : <Bot size={16} />}
                           </div>
@@ -105,23 +99,24 @@ export function PurchaseSection() {
                         </div>
                       </div>
                     )}
+                    <div ref={messagesEndRef} />
                   </div>
                 </ScrollArea>
                 <div className="p-4 bg-white border-t">
-                  <form 
+                  <form
                     onSubmit={(e) => { e.preventDefault(); handleSend(); }}
                     className="flex space-x-2"
                   >
-                    <Input 
+                    <Input
                       placeholder="Tire suas dúvidas com a Lia..."
                       value={input}
                       onChange={(e) => setInput(e.target.value)}
                       disabled={isLoading}
                       className="flex-1 border-primary/20 rounded-full h-12 px-6"
                     />
-                    <Button 
-                      type="submit" 
-                      size="icon" 
+                    <Button
+                      type="submit"
+                      size="icon"
                       disabled={isLoading || !input.trim()}
                       className="rounded-full w-12 h-12 shrink-0"
                     >
