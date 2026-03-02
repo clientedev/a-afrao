@@ -7,17 +7,17 @@ export function Benefits() {
     {
       icon: Activity,
       title: "Prevenção da Foliculite",
-      description: "Auxilia na prevenção e tratamento de pelos encravados e inflamações."
+      description: "Auxilia na prevenção de foliculite e contribui para reduzir a aparência de pelos encravados."
     },
     {
       icon: Zap,
-      title: "Bactericida Poderoso",
-      description: "Combate as bactérias e contribui para o controle da acne e oleosidade."
+      title: "Controle de Oleosidade",
+      description: "Auxilia no controle da oleosidade e ajuda a manter a pele mais uniforme."
     },
     {
       icon: RefreshCw,
-      title: "Cicatrizante Natural",
-      description: "Acelera a recuperação da pele e acalma irritações."
+      title: "Cuidado Progressivo",
+      description: "Pode contribuir para o enfraquecimento progressivo dos pelos com uso contínuo."
     }
   ];
 
@@ -25,17 +25,17 @@ export function Benefits() {
     <section id="beneficios" className="py-24 bg-muted/30">
       <div className="container mx-auto px-4 md:px-6">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
-          
+
           <FadeIn direction="right" className="order-2 lg:order-1">
             <div className="relative rounded-3xl overflow-hidden shadow-2xl">
-              <img 
-                src={diagramImg} 
-                alt="Benefícios do Sabonete" 
+              <img
+                src={diagramImg}
+                alt="Benefícios do Sabonete"
                 className="w-full h-auto object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
               <div className="absolute bottom-6 left-6 right-6">
-                <p className="text-white font-serif text-2xl font-medium text-balance">Sinergia pura para a saúde da sua pele.</p>
+                <p className="text-white font-serif text-2xl font-medium text-balance">Sinergia equilibrada entre tradição natural e tecnologia cosmética.</p>
               </div>
             </div>
           </FadeIn>
@@ -43,10 +43,10 @@ export function Benefits() {
           <div className="order-1 lg:order-2">
             <FadeIn direction="left">
               <h2 className="text-3xl md:text-4xl font-serif font-bold text-foreground mb-6">
-                Transformação Visível e <span className="text-secondary italic">Natural</span>
+                O queridinho de quem busca <span className="text-secondary italic">pele uniforme</span>
               </h2>
-              <p className="text-lg text-muted-foreground mb-10">
-                Cada banho se torna um tratamento terapêutico. Nossos ingredientes foram cuidadosamente selecionados para entregar resultados reais.
+              <p className="text-lg text-muted-foreground mb-10 text-balance">
+                Não é à toa que é campeão de vendas. Milhares de clientes já escolheram o Sabonete de Açafrão e Dolomita para incluir na rotina de autocuidado e manter a pele mais equilibrada, com menos pelos encravados e aparência mais uniforme. Resultados visíveis com constância.
               </p>
 
               <div className="space-y-8">
@@ -66,6 +66,7 @@ export function Benefits() {
               </div>
             </FadeIn>
           </div>
+
 
         </div>
       </div>

@@ -11,33 +11,33 @@ export function HowToUse() {
     {
       num: "02",
       title: "Massageie suavemente",
-      desc: "Faça movimentos circulares até formar uma espuma cremosa e abundante."
+      desc: "Faça movimentos circulares até formar uma espuma cremosa. Uso diário."
     },
     {
       num: "03",
       title: "Deixe agir",
-      desc: "Para maximizar os benefícios do açafrão e dolomita, aguarde no mínimo 3 minutos."
+      desc: "Deixar agir por até 3 minutos. Em peles sensíveis, iniciar com 1 minuto e aumentar gradualmente."
     },
     {
       num: "04",
       title: "Enxágue",
-      desc: "Retire todo o produto com água abundante. Sinta a pele limpa e macia."
+      desc: "Enxágue completamente com água abundante. Sinta a pele limpa e macia."
     }
   ];
 
   return (
     <section id="como-usar" className="py-24 bg-secondary text-secondary-foreground relative">
       <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10 mix-blend-overlay"></div>
-      
+
       <div className="container mx-auto px-4 md:px-6 relative z-10">
         <div className="grid lg:grid-cols-5 gap-12 items-center">
-          
+
           <div className="lg:col-span-2">
             <FadeIn direction="right">
               <div className="rounded-full overflow-hidden border-8 border-white/10 shadow-2xl mx-auto max-w-[300px] lg:max-w-full aspect-square">
-                <img 
-                  src={closeUpImg} 
-                  alt="Espuma cremosa sabonete" 
+                <img
+                  src={closeUpImg}
+                  alt="Espuma cremosa sabonete"
                   className="w-full h-full object-cover"
                 />
               </div>
@@ -47,7 +47,7 @@ export function HowToUse() {
           <div className="lg:col-span-3">
             <FadeIn direction="left">
               <h2 className="text-3xl md:text-5xl font-serif font-bold mb-10 text-white">Como incluir na sua rotina</h2>
-              
+
               <div className="grid sm:grid-cols-2 gap-8">
                 {steps.map((step, i) => (
                   <div key={i} className="relative pl-6 border-l-2 border-primary/40 pb-4">

@@ -16,15 +16,21 @@ export function Hero() {
           {/* Text Content */}
           <div className="max-w-xl">
             <FadeIn direction="up">
-              <div className="inline-flex items-center space-x-2 bg-white/60 backdrop-blur-sm border border-border/50 px-3 py-1 rounded-full text-xs font-semibold text-primary mb-6">
-                <Sparkles size={14} />
-                <span>Ativos Naturais e Vegano</span>
+              <div className="flex flex-col gap-1 mb-6">
+                <div className="inline-flex items-center space-x-2 bg-white/60 backdrop-blur-sm border border-border/50 px-3 py-1 rounded-full text-xs font-semibold text-primary w-fit">
+                  <Sparkles size={14} />
+                  <span>⭐ Campeão de vendas na Shopee</span>
+                </div>
+                <div className="inline-flex items-center space-x-2 bg-white/60 backdrop-blur-sm border border-border/50 px-3 py-1 rounded-full text-xs font-semibold text-secondary w-fit">
+                  <Sparkles size={14} />
+                  <span>💛 Um dos queridinhos da Ecosopis</span>
+                </div>
               </div>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-foreground leading-tight mb-6 text-balance">
-                Sabonete de <span className="text-primary italic">Açafrão</span> e Dolomita – Pele uniforme e livre de foliculite
+                Sabonete de <span className="text-primary italic">Açafrão e Dolomita</span> – Pele uniforme e livre de foliculite
               </h1>
               <p className="text-lg md:text-xl text-muted-foreground mb-8 leading-relaxed text-balance">
-                Cuidado natural para a sua pele. Uma sinergia perfeita entre a natureza e o bem-estar, auxiliando no tratamento de foliculite.
+                Desenvolvido com ativos de origem natural, o Sabonete de Açafrão e Dolomita é ideal para quem busca auxiliar na prevenção da foliculite, controlar a oleosidade e manter a pele com aparência mais uniforme.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4">

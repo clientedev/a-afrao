@@ -6,19 +6,19 @@ export function Ingredients() {
   const ingredients = [
     {
       name: "Açafrão (Cúrcuma)",
-      desc: "Conhecido por suas fortes propriedades anti-inflamatórias. Reduz a oleosidade e previne acne."
+      desc: "Conhecido por suas propriedades antioxidantes e por auxiliar na aparência de inflamações, contribuindo para o equilíbrio da pele."
     },
     {
       name: "Dolomita",
-      desc: "Rica em cálcio e magnésio, tem ação calmante e tonificante na pele."
+      desc: "Mineral rico em cálcio e magnésio, auxilia na purificação e no controle da oleosidade."
     },
     {
       name: "Extrato de Barbatimão",
-      desc: "Poderoso adstringente e cicatrizante natural, excelente para combater inflamações e tratar a foliculite."
+      desc: "Tradicionalmente utilizado por sua ação adstringente natural, auxiliando na prevenção de foliculite e na aparência de pele mais equilibrada."
     },
     {
       name: "Glicerina & Lauril Vegetal",
-      desc: "Base 100% vegetal que limpa sem agredir, mantendo a hidratação natural e proporcionando espuma cremosa."
+      desc: "Base 100% vegetal que limpa sem agredir, mantendo a hidratação natural e proporcionando espuma cremosa suave."
     }
   ];
 
@@ -32,11 +32,11 @@ export function Ingredients() {
       <div className="container mx-auto px-4 md:px-6">
         <FadeIn className="text-center max-w-3xl mx-auto mb-16">
           <h2 className="text-3xl md:text-4xl font-serif font-bold text-foreground mb-4">Puro e Verdadeiro</h2>
-          <p className="text-lg text-muted-foreground">Formulado com ativos de origem natural e fragrância cosmética suave. Livre de testes em animais.</p>
+          <p className="text-lg text-muted-foreground">Formulado com ativos de origem natural e fragrância cosmética suave. Produto vegano e livre de testes em animais.</p>
         </FadeIn>
 
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-          
+
           <div className="space-y-6">
             {ingredients.map((ing, i) => (
               <FadeIn key={i} delay={i * 0.1} direction="up" className="bg-background rounded-2xl p-6 border border-border/50 hover:border-secondary/30 transition-colors">
@@ -51,9 +51,9 @@ export function Ingredients() {
 
           <FadeIn direction="left" className="relative h-full min-h-[400px]">
             <div className="absolute inset-0 rounded-[2rem] bg-secondary/10 translate-x-4 translate-y-4"></div>
-            <img 
-              src={detail1Img} 
-              alt="Ingredientes Naturais" 
+            <img
+              src={detail1Img}
+              alt="Ingredientes Naturais"
               className="relative z-10 w-full h-full object-cover rounded-[2rem] shadow-xl"
             />
           </FadeIn>

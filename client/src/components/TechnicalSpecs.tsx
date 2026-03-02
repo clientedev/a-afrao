@@ -1,18 +1,18 @@
 import { FadeIn } from "./FadeIn";
-import { CheckCircle2, ShieldPlus, Leaf, Droplets, HeartPulse, Sparkles } from "lucide-react";
+import { ShieldPlus, Leaf, Droplets, HeartPulse, Sparkles } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 
 export function TechnicalSpecs() {
   const specs = [
     {
-      title: "Principais Ações",
-      value: "Anti-inflamatória, bactericida e cicatrizante.",
+      title: "Principais Ativos",
+      value: "Açafrão, Dolomita e Extrato de Barbatimão.",
       icon: ShieldPlus,
       color: "text-secondary"
     },
     {
-      title: "Tratamento",
-      value: "Auxilia na redução de foliculite e inflamações.",
+      title: "Ação Cosmética",
+      value: "Auxilia na prevenção de foliculite e aparência uniforme.",
       icon: HeartPulse,
       color: "text-destructive"
     },
@@ -29,10 +29,10 @@ export function TechnicalSpecs() {
       color: "text-secondary"
     },
     {
-      title: "Peso & Formato",
-      value: "≈100g. Pode haver variação por ser artesanal.",
-      icon: CheckCircle2,
-      color: "text-foreground"
+      title: "Puro e Verdadeiro",
+      value: "Produto vegano e livre de testes em animais.",
+      icon: Sparkles,
+      color: "text-primary"
     }
   ];
 
